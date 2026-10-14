@@ -282,7 +282,8 @@ async def analyze_stream(req: AnalyzeRequest):
         raise HTTPException(status_code=500,
                             detail="GROQ_API_KEY is not configured on the server.")
 
-    model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+    model = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
+
     prompt = get_action_prompt(req.action, req.language, req.sourceCode)
 
     async def generator():
